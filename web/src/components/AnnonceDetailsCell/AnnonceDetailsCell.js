@@ -1,4 +1,5 @@
 import AnnonceDetails from '../AnnonceDetails/AnnonceDetails'
+
 export const QUERY = gql`
   query AnnonceDetailsQuery($id: Int!) {
     annonceDetails: annonce(id: $id) {

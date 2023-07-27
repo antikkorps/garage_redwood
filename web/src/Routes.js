@@ -40,6 +40,7 @@ const Routes = () => {
         <Route path="/annonces" page={AnnonceAnnoncesPage} name="annonces" />
       </Set>
       <Set wrap={GarageLayout}>
+        <Route path="/contact" page={ContactPage} name="contact" />
         <Route path="/annonce-details/{id:Int}" page={AnnonceDetailsPage} name="annonceDetails" />
         <Route path="/about" page={AboutPage} name="about" />
         <Route path="/" page={HomePage} name="home" />
