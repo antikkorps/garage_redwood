@@ -12,45 +12,53 @@ generator client {
 // to create migrations for them and apply to your dev DB.
 // TODO: Please remove the following example:
 model Annonce {
-  id        Int  @id @default(autoincrement())
-  title     String
-  description   String?
-  kilometrage   Int?
+  id                Int         @id @default(autoincrement())
+  title             String
+  description       String?
+  kilometrage       Int?
   yearofcirculation Int?
-  featuredImage String?
-  price     Int?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  Equipment Equipment[]
+  price             Int?
+  published         Boolean     @default(false)
+  author            User?       @relation(fields: [authorId], references: [id])
+  authorId          Int?
+  createdAt         DateTime    @default(now()) @map(name: "created_at")
+  Equipment         Equipment[]
+  Image             Image[]
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  featuredImage Boolean @default(false)
+  Annonce   Annonce? @relation(fields: [AnnonceId], references: [id])
+  AnnonceId Int?
 }
 
 model Equipment {
-  id        Int  @id @default(autoincrement())
-  name      String?
-  Annonces  Annonce[]
+  id       Int       @id @default(autoincrement())
+  name     String?
+  Annonces Annonce[]
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  name      String?
-  email     String?   @unique
-  hashedPassword  String
-  salt      String
-  resetToken String?
+  id                  Int       @id @default(autoincrement())
+  name                String?
+  email               String?   @unique
+  hashedPassword      String
+  salt                String
+  resetToken          String?
   resetTokenExpiresAt DateTime?
-  createdAt DateTime  @default(now()) @map(name: "created_at")
-  updatedAt DateTime  @updatedAt @map(name: "updated_at")
-  Annonces  Annonce[]
-  Role      Role?     @relation(fields: [roleId], references: [id])
-  roleId    Int?
+  createdAt           DateTime  @default(now()) @map(name: "created_at")
+  updatedAt           DateTime  @updatedAt @map(name: "updated_at")
+  Annonces            Annonce[]
+  Role                Role?     @relation(fields: [roleId], references: [id])
+  roleId              Int?
 
   @@map(name: "users")
 }
 
 model Role {
-  id    Int  @id @default(autoincrement())
+  id    Int     @id @default(autoincrement())
   name  String?
   users User[]
 
