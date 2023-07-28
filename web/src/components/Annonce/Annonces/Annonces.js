@@ -44,7 +44,6 @@ const AnnoncesList = ({ annonces }) => {
             <th>Description</th>
             <th>Kilometrage</th>
             <th>Yearofcirculation</th>
-            <th>Featured image</th>
             <th>Price</th>
             <th>Published</th>
             <th>Author id</th>
@@ -60,7 +59,6 @@ const AnnoncesList = ({ annonces }) => {
               <td>{truncate(annonce.description)}</td>
               <td>{truncate(annonce.kilometrage)}</td>
               <td>{truncate(annonce.yearofcirculation)}</td>
-              <td>{truncate(annonce.featuredImage)}</td>
               <td>{truncate(annonce.price)}</td>
               <td>{checkboxInputTag(annonce.published)}</td>
               <td>{truncate(annonce.authorId)}</td>

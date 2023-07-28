@@ -60,10 +60,6 @@ const Annonce = ({ annonce }) => {
               <td>{annonce.yearofcirculation}</td>
             </tr>
             <tr>
-              <th>Featured image</th>
-              <td>{annonce.featuredImage}</td>
-            </tr>
-            <tr>
               <th>Price</th>
               <td>{annonce.price}</td>
             </tr>

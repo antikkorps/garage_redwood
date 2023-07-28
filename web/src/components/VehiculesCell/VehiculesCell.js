@@ -8,11 +8,20 @@ export const QUERY = gql`
       description
       kilometrage
       yearofcirculation
-      featuredImage
       price
       published
       authorId
       createdAt
+      Equipment {
+        id
+        name
+      }
+      Image {
+        id
+        name
+        url
+        featuredImage
+      }
     }
   }
 `
@@ -37,11 +46,29 @@ export const Success = ({ vehicules }) => {
               </Link>
             </h2>
           </header>
-          <p>Description : {vehicule.description}</p>
+          <p>Description: {vehicule.description}</p>
           <p>Kilométrage : {vehicule.kilometrage}</p>
           <p>Année de mise en circulation : {vehicule.yearofcirculation}</p>
           <p>Prix : {vehicule.price} €</p>
           <div>Crée le : {vehicule.createdAt}</div>
+          {vehicule.Image.length > 0 && (
+            <>
+              <p>Images:</p>
+              {vehicule.Image.map((image) =>
+                image.featuredImage ? (
+                  <div key={image.id}>
+                    <img
+                      src={image.url}
+                      alt={image.name}
+                      width="200px"
+                      height="auto"
+                    />
+                    <p>{image.name}</p>
+                  </div>
+                ) : null
+              )}
+            </>
+          )}
         </vehicule>
       ))}
     </>

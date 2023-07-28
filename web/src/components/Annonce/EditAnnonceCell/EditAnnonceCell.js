@@ -1,5 +1,4 @@
 import { navigate, routes } from '@redwoodjs/router'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
@@ -13,7 +12,6 @@ export const QUERY = gql`
       description
       kilometrage
       yearofcirculation
-      featuredImage
       price
       published
       authorId
@@ -29,7 +27,6 @@ const UPDATE_ANNONCE_MUTATION = gql`
       description
       kilometrage
       yearofcirculation
-      featuredImage
       price
       published
       authorId

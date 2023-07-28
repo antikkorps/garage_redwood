@@ -8,11 +8,19 @@ export const QUERY = gql`
       description
       kilometrage
       yearofcirculation
-      featuredImage
       price
       published
       authorId
       createdAt
+      Equipment {
+        id
+        name
+      }
+      Image {
+        id
+        name
+        url
+      }
     }
   }
 `

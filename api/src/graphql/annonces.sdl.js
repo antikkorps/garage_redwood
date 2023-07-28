@@ -5,13 +5,13 @@ export const schema = gql`
     description: String
     kilometrage: Int
     yearofcirculation: Int
-    featuredImage: String
     price: Int
     published: Boolean!
     author: User
     authorId: Int
     createdAt: DateTime!
     Equipment: [Equipment]!
+    Image: [Image]!
   }
 
   type Query {
@@ -24,7 +24,6 @@ export const schema = gql`
     description: String
     kilometrage: Int
     yearofcirculation: Int
-    featuredImage: String
     price: Int
     published: Boolean!
     authorId: Int
@@ -35,7 +34,6 @@ export const schema = gql`
     description: String
     kilometrage: Int
     yearofcirculation: Int
-    featuredImage: String
     price: Int
     published: Boolean
     authorId: Int

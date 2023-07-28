@@ -36,4 +36,7 @@ export const Annonce = {
   Equipment: (_obj, { root }) => {
     return db.annonce.findUnique({ where: { id: root?.id } }).Equipment()
   },
+  Image: (_obj, { root }) => {
+    return db.annonce.findUnique({ where: { id: root?.id } }).Image()
+  },
 }

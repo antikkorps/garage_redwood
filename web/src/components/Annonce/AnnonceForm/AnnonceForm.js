@@ -94,23 +94,6 @@ const AnnonceForm = (props) => {
         <FieldError name="yearofcirculation" className="rw-field-error" />
 
         <Label
-          name="featuredImage"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Featured image
-        </Label>
-
-        <TextField
-          name="featuredImage"
-          defaultValue={props.annonce?.featuredImage}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="featuredImage" className="rw-field-error" />
-
-        <Label
           name="price"
           className="rw-label"
           errorClassName="rw-label rw-label-error"

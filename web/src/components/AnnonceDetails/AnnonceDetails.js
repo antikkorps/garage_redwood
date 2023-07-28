@@ -17,6 +17,23 @@ const AnnonceDetails = ({ annonceDetails }) => {
         <p>Prix : {annonceDetails.price} €</p>
       </div>
       <div>Posted at: {annonceDetails.createdAt}</div>
+      {annonceDetails.Image.length > 0 && (
+        <div>
+          {annonceDetails.Image.map((image) =>
+            image.featuredImage ? (
+              <div key={image.id}>
+                <img
+                  src={image.url}
+                  alt={image.name}
+                  width="200px"
+                  height="auto"
+                />
+                <p>{image.name}</p>
+              </div>
+            ) : null
+          )}
+        </div>
+      )}
     </article>
   )
 }

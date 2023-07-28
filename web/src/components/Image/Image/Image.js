@@ -62,7 +62,7 @@ const Image = ({ image }) => {
                   <img
                     src={image.url}
                     style={{ maxWidth: '200px' }}
-                    alt="illustration"
+                    alt={image.name}
                   />
                 </a>
               </td>

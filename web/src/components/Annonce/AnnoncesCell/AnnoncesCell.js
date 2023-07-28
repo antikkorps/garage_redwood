@@ -10,7 +10,6 @@ export const QUERY = gql`
       description
       kilometrage
       yearofcirculation
-      featuredImage
       price
       published
       authorId
