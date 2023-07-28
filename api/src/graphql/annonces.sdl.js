@@ -15,8 +15,8 @@ export const schema = gql`
   }
 
   type Query {
-    annonces: [Annonce!]! @requireAuth
-    annonce(id: Int!): Annonce @requireAuth
+    annonces: [Annonce!]! @skipAuth
+    annonce(id: Int!): Annonce @skipAuth
   }
 
   input CreateAnnonceInput {
