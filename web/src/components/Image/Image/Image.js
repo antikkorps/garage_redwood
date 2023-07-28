@@ -55,6 +55,18 @@ const Image = ({ image }) => {
               <th>Annonce id</th>
               <td>{image.AnnonceId}</td>
             </tr>
+            <tr>
+              <th>Image</th>
+              <td>
+                <a href={image.url} target="_blank" rel="noreferrer">
+                  <img
+                    src={image.url}
+                    style={{ maxWidth: '200px' }}
+                    alt="illustration"
+                  />
+                </a>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -5,6 +5,7 @@ export const schema = gql`
     featuredImage: Boolean!
     Annonce: Annonce
     AnnonceId: Int
+    url: String
   }
 
   type Query {
@@ -16,6 +17,7 @@ export const schema = gql`
     name: String
     featuredImage: Boolean!
     AnnonceId: Int
+    url: String
   }
 
   input UpdateImageInput {

@@ -29,6 +29,7 @@ model Annonce {
 model Image {
   id        Int      @id @default(autoincrement())
   name      String?
+  url       String?
   featuredImage Boolean @default(false)
   Annonce   Annonce? @relation(fields: [AnnonceId], references: [id])
   AnnonceId Int?
