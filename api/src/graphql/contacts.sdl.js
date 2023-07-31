@@ -3,6 +3,7 @@ export const schema = gql`
     id: Int!
     name: String!
     email: String!
+    numero_de_telephone: String!
     message: String!
     createdAt: DateTime!
   }
@@ -15,6 +16,7 @@ export const schema = gql`
   input CreateContactInput {
     name: String!
     email: String!
+    numero_de_telephone: String!
     message: String!
   }
 

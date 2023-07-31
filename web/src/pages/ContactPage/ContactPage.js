@@ -69,6 +69,18 @@ const ContactPage = () => {
         />
         <FieldError name="email" className="error" />
 
+        <Label name="numero_de_telephone" errorClassName="error">
+          Téléphone
+        </Label>
+        <TextField
+          name="numero_de_telephone"
+          validation={{
+            required: true,
+          }}
+          errorClassName="error"
+        />
+        <FieldError name="numero_de_telephone" className="error" />
+
         <Label name="message" errorClassName="error">
           Message
         </Label>
