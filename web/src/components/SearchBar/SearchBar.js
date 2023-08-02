@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Form, Label, SelectField, Submit, useForm } from '@redwoodjs/forms'
 import { useParams } from '@redwoodjs/router'
@@ -8,9 +8,10 @@ import VehiculesCell from '../VehiculesCell'
 const SearchBar = () => {
   const { term } = useParams()
   const [searchInput, setSearchInput] = useState(term || '')
-  const [showFilters, setShowFilters] = useState(true) // On affiche toujours les filtres
+  const [showFilters] = useState(true)
   const [kilometer, setKilometer] = useState('')
   const [year, setYear] = useState('')
+  const [vehicules, setVehicules] = useState(null) // Déclaration de la variable vehicules
 
   const onChange = (event) => {
     setSearchInput(event.target.value)
@@ -23,25 +24,32 @@ const SearchBar = () => {
   const onYearChange = (event) => {
     setYear(event.target.value)
   }
+  const formMethods = useForm()
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault()
     const searchParams = new URLSearchParams()
     searchParams.append('searchInput', searchInput)
     searchParams.append('kilometer', kilometer)
     searchParams.append('year', year)
 
-    const vehicules = useEffect(() => {
-      return VehiculesCell.getData(searchParams)
-    }, [searchParams])
+    // Appeler la fonction VehiculesCell.getData() pour récupérer les résultats de recherche
+    const result = await VehiculesCell.getData(searchParams)
 
-    return <div>{vehicules}</div>
+    console.log(result)
+
+    // Mettre à jour le composant avec les résultats de recherche
+    setVehicules(result)
   }
 
   return (
     <>
       <div className="searchBar">
-        <Form onSubmit={onSubmit} config={{ mode: 'onBlur' }}>
+        <Form
+          onSubmit={onSubmit}
+          config={{ mode: 'onBlur' }}
+          formMethods={formMethods}
+        >
           {/* Toujours afficher les champs de recherche */}
           <Label name="searchBar" errorClassName="error">
             Votre recherche
@@ -68,7 +76,7 @@ const SearchBar = () => {
                 <option value="0-5000">0 - 5000 km</option>
                 <option value="5000-10000">5000 - 10000 km</option>
                 <option value="10000-20000">10000 - 20000 km</option>
-                {/* Ajouter d'autres options de kilométrage selon vos besoins */}
+                <option value="20000 et au delà">20000 km et au delà</option>
               </SelectField>
 
               <Label name="year" errorClassName="error">
@@ -84,7 +92,9 @@ const SearchBar = () => {
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
-                {/* Ajouter d'autres options d'années selon vos besoins */}
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
               </SelectField>
             </>
           )}
@@ -94,7 +104,8 @@ const SearchBar = () => {
           </div>
         </Form>
 
-        {/* <div className="searchResults">{vehicules}</div> */}
+        {/* Afficher les résultats de recherche ici */}
+        {vehicules && <div className="searchResults">{vehicules}</div>}
       </div>
     </>
   )
