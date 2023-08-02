@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react'
-
-import { gql } from 'graphql-tag'
+import { useState } from 'react'
 
 import { Form, Label, SelectField, Submit, useForm } from '@redwoodjs/forms'
-import { useParams, useQuery } from '@redwoodjs/router'
+import { useParams } from '@redwoodjs/router'
 
 const SearchBar = () => {
   const { term } = useParams()
