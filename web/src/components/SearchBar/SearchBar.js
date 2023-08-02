@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Form, Label, SelectField, Submit, useForm } from '@redwoodjs/forms'
 import { useParams } from '@redwoodjs/router'
+
+import VehiculesCell from '../VehiculesCell'
 
 const SearchBar = () => {
   const { term } = useParams()
@@ -26,11 +28,14 @@ const SearchBar = () => {
     event.preventDefault()
     const searchParams = new URLSearchParams()
     searchParams.append('searchInput', searchInput)
+    searchParams.append('kilometer', kilometer)
+    searchParams.append('year', year)
 
-    if (showFilters) {
-      searchParams.append('kilometer', kilometer)
-      searchParams.append('year', year)
-    }
+    const vehicules = useEffect(() => {
+      return VehiculesCell.getData(searchParams)
+    }, [searchParams])
+
+    return <div>{vehicules}</div>
   }
 
   return (
@@ -89,9 +94,7 @@ const SearchBar = () => {
           </div>
         </Form>
 
-        <div className="searchResults">
-          <div className="searchResults__item">le résultat est ici</div>
-        </div>
+        {/* <div className="searchResults">{vehicules}</div> */}
       </div>
     </>
   )
