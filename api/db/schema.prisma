@@ -49,21 +49,12 @@ model User {
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
+  roles               String @default("user")
   createdAt           DateTime  @default(now()) @map(name: "created_at")
   updatedAt           DateTime  @updatedAt @map(name: "updated_at")
   Annonces            Annonce[]
-  Role                Role?     @relation(fields: [roleId], references: [id])
-  roleId              Int?
 
   @@map(name: "users")
-}
-
-model Role {
-  id    Int     @id @default(autoincrement())
-  name  String?
-  users User[]
-
-  @@map(name: "roles")
 }
 
 model Contact {
